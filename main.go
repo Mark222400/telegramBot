@@ -11,6 +11,7 @@ func main() {
 	if err != nil {
 		log.Panic("Ошибка взаимодействия с API бота: ", err)
 	}
+  go uvedomlator(bot)
 	g := tg.BotCommand{
 		Command:     "/start",
 		Description: "Запуск бота",
