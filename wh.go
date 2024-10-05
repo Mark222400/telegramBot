@@ -8,8 +8,9 @@ import (
 )
 
 func wh_1(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("#1","whOne_"+small),tg.NewInlineKeyboardButtonData("2","whTwo_"+small),tg.NewInlineKeyboardButtonData("3","whThree_"+small),tg.NewInlineKeyboardButtonData("4","whFour_"+small),tg.NewInlineKeyboardButtonData("5","whFive_"+small),tg.NewInlineKeyboardButtonData("6","whSix_"+small),tg.NewInlineKeyboardButtonData("7","whSeven_"+small))
 	var rows [][]tg.InlineKeyboardButton
-	for i := 1; i < 21; i += 2 {
+	for i := 1; i < 17; i += 2 {
 		name, callback := arrHandlerFromWH(small, i)
 		bl := tg.NewInlineKeyboardButtonData(name, "whOne_"+callback)
 		name, callback = arrHandlerFromWH(small, i+1)
@@ -18,11 +19,19 @@ func wh_1(bot *tg.BotAPI, update tg.Update, small string) {
 		rows = append(rows, row)
 	}
 	small = strings.Trim(small, ":")
-	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Далее", "whTwo_"+small))
-	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"))
-	rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Подтвердить", "boxtype_"+small))
-	rows = append(rows, rowFunc, rowAdmire, rowHome)
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData(">>", "whTwo_"+small))
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows,rowPages, rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows, rowPages,rowFunc, rowHome)
+	}
 	text := textWH(small)
+	if small == ""{
+		text="☆Выберите склады(максимально 5)"
+	}
 	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
 	keyboard := tg.InlineKeyboardMarkup{
 		InlineKeyboard: rows,
@@ -32,8 +41,9 @@ func wh_1(bot *tg.BotAPI, update tg.Update, small string) {
 }
 
 func wh_2(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("1","whOne_"+small),tg.NewInlineKeyboardButtonData("#2","whTwo_"+small),tg.NewInlineKeyboardButtonData("3","whThree_"+small),tg.NewInlineKeyboardButtonData("4","whFour_"+small),tg.NewInlineKeyboardButtonData("5","whFive_"+small),tg.NewInlineKeyboardButtonData("6","whSix_"+small),tg.NewInlineKeyboardButtonData("7","whSeven_"+small))
 	var rows [][]tg.InlineKeyboardButton
-	for i := 20; i < 41; i += 2 {
+	for i := 17; i < 33; i += 2 {
 		name, callback := arrHandlerFromWH(small, i)
 		bl := tg.NewInlineKeyboardButtonData(name, "whTwo_"+callback)
 		name, callback = arrHandlerFromWH(small, i+1)
@@ -42,10 +52,20 @@ func wh_2(bot *tg.BotAPI, update tg.Update, small string) {
 		rows = append(rows, row)
 	}
 	small = strings.Trim(small, ":")
-	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Назад", "whOne_"+small), tg.NewInlineKeyboardButtonData("Далее", "whThree_"+small))
-	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"))
-	rows = append(rows, rowFunc, rowHome)
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("<<", "whOne_"+small), tg.NewInlineKeyboardButtonData(">>", "whThree_"+small))
+
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows,rowPages, rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows,rowPages, rowFunc, rowHome)
+	}
 	text := textWH(small)
+	if small == ""{
+		text="☆Выберите склады(максимально 5)"
+	}
 	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
 	keyboard := tg.InlineKeyboardMarkup{
 		InlineKeyboard: rows,
@@ -55,8 +75,9 @@ func wh_2(bot *tg.BotAPI, update tg.Update, small string) {
 }
 
 func wh_3(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("1","whOne_"+small),tg.NewInlineKeyboardButtonData("2","whTwo_"+small),tg.NewInlineKeyboardButtonData("#3","whThree_"+small),tg.NewInlineKeyboardButtonData("4","whFour_"+small),tg.NewInlineKeyboardButtonData("5","whFive_"+small),tg.NewInlineKeyboardButtonData("6","whSix_"+small),tg.NewInlineKeyboardButtonData("7","whSeven_"+small))
 	var rows [][]tg.InlineKeyboardButton
-	for i := 41; i < 61; i += 2 {
+	for i := 33; i < 49; i += 2 {
 		name, callback := arrHandlerFromWH(small, i)
 		bl := tg.NewInlineKeyboardButtonData(name, "whThree_"+callback)
 		name, callback = arrHandlerFromWH(small, i+1)
@@ -65,10 +86,20 @@ func wh_3(bot *tg.BotAPI, update tg.Update, small string) {
 		rows = append(rows, row)
 	}
 	small = strings.Trim(small, ":")
-	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Назад", "whTwo_"+small), tg.NewInlineKeyboardButtonData("Далее", "whFour_"+small))
-	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"))
-	rows = append(rows, rowFunc, rowHome)
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("<<", "whTwo_"+small), tg.NewInlineKeyboardButtonData(">>", "whFour_"+small))
+
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows, rowPages,rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows,rowPages, rowFunc, rowHome)
+	}
 	text := textWH(small)
+	if small == ""{
+		text="☆Выберите склады(максимально 5)"
+	}
 	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
 	keyboard := tg.InlineKeyboardMarkup{
 		InlineKeyboard: rows,
@@ -78,8 +109,9 @@ func wh_3(bot *tg.BotAPI, update tg.Update, small string) {
 }
 
 func wh_4(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("1","whOne_"+small),tg.NewInlineKeyboardButtonData("2","whTwo_"+small),tg.NewInlineKeyboardButtonData("3","whThree_"+small),tg.NewInlineKeyboardButtonData("#4","whFour_"+small),tg.NewInlineKeyboardButtonData("5","whFive_"+small),tg.NewInlineKeyboardButtonData("6","whSix_"+small),tg.NewInlineKeyboardButtonData("7","whSeven_"+small))
 	var rows [][]tg.InlineKeyboardButton
-	for i := 61; i < 81; i += 2 {
+	for i := 49; i < 65; i += 2 {
 		name, callback := arrHandlerFromWH(small, i)
 		bl := tg.NewInlineKeyboardButtonData(name, "whFour_"+callback)
 		name, callback = arrHandlerFromWH(small, i+1)
@@ -88,10 +120,19 @@ func wh_4(bot *tg.BotAPI, update tg.Update, small string) {
 		rows = append(rows, row)
 	}
 	small = strings.Trim(small, ":")
-	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Назад", "whThree_"+small), tg.NewInlineKeyboardButtonData("Далее", "whFive_"+small))
-	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"))
-	rows = append(rows, rowFunc, rowHome)
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("<<", "whThree_"+small), tg.NewInlineKeyboardButtonData(">>", "whFive_"+small))
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows,rowPages, rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows,rowPages, rowFunc, rowHome)
+	}
 	text := textWH(small)
+	if small == ""{
+		text="☆Выберите склады(максимально 5)"
+	}
 	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
 	keyboard := tg.InlineKeyboardMarkup{
 		InlineKeyboard: rows,
@@ -101,8 +142,9 @@ func wh_4(bot *tg.BotAPI, update tg.Update, small string) {
 }
 
 func wh_5(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("1","whOne_"+small),tg.NewInlineKeyboardButtonData("2","whTwo_"+small),tg.NewInlineKeyboardButtonData("3","whThree_"+small),tg.NewInlineKeyboardButtonData("4","whFour_"+small),tg.NewInlineKeyboardButtonData("#5","whFive_"+small),tg.NewInlineKeyboardButtonData("6","whSix_"+small),tg.NewInlineKeyboardButtonData("7","whSeven_"+small))
 	var rows [][]tg.InlineKeyboardButton
-	for i := 81; i < 101; i += 2 {
+	for i := 65; i < 81; i += 2 {
 		name, callback := arrHandlerFromWH(small, i)
 		bl := tg.NewInlineKeyboardButtonData(name, "whFive_"+callback)
 		name, callback = arrHandlerFromWH(small, i+1)
@@ -111,10 +153,19 @@ func wh_5(bot *tg.BotAPI, update tg.Update, small string) {
 		rows = append(rows, row)
 	}
 	small = strings.Trim(small, ":")
-	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Назад", "whFour_"+small), tg.NewInlineKeyboardButtonData("Далее", "whSix_"+small))
-	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"))
-	rows = append(rows, rowFunc, rowHome)
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("<<", "whFour_"+small), tg.NewInlineKeyboardButtonData(">>", "whSix_"+small))
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows,rowPages, rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows,rowPages, rowFunc, rowHome)
+	}
 	text := textWH(small)
+	if small == ""{
+		text="Выберите склады(максимально 5)"
+	}
 	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
 	keyboard := tg.InlineKeyboardMarkup{
 		InlineKeyboard: rows,
@@ -124,21 +175,69 @@ func wh_5(bot *tg.BotAPI, update tg.Update, small string) {
 }
 
 func wh_6(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("1","whOne_"+small),tg.NewInlineKeyboardButtonData("2","whTwo_"+small),tg.NewInlineKeyboardButtonData("3","whThree_"+small),tg.NewInlineKeyboardButtonData("4","whFour_"+small),tg.NewInlineKeyboardButtonData("5","whFive_"+small),tg.NewInlineKeyboardButtonData("#6","whSix_"+small),tg.NewInlineKeyboardButtonData("7","whSeven_"+small))
 	var rows [][]tg.InlineKeyboardButton
-	name, callback := arrHandlerFromWH(small, 101)
-	bl := tg.NewInlineKeyboardButtonData(name, "whSix_"+callback)
-	name, callback = arrHandlerFromWH(small, 102)
-	br := tg.NewInlineKeyboardButtonData(name, "whSix_"+callback)
-	name, callback = arrHandlerFromWH(small, 103)
-	bdownRow := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData(name, "whSix_"+callback))
-	row := tg.NewInlineKeyboardRow(bl, br)
-	rows = append(rows, row, bdownRow)
-
+	for i := 81; i < 97; i += 2 {
+		name, callback := arrHandlerFromWH(small, i)
+		bl := tg.NewInlineKeyboardButtonData(name, "whSix_"+callback)
+		name, callback = arrHandlerFromWH(small, i+1)
+		br := tg.NewInlineKeyboardButtonData(name, "whSix_"+callback)
+		row := tg.NewInlineKeyboardRow(bl, br)
+		rows = append(rows, row)
+	}
 	small = strings.Trim(small, ":")
-	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("Назад", "whFive_"+small))
-	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"))
-	rows = append(rows, rowFunc, rowHome)
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("<<", "whFive_"+small), tg.NewInlineKeyboardButtonData(">>", "whSeven_"+small))
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows,rowPages, rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows,rowPages, rowFunc, rowHome)
+	}
 	text := textWH(small)
+	if small == ""{
+		text="☆Выберите склады(максимально 5)"
+	}
+	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
+	keyboard := tg.InlineKeyboardMarkup{
+		InlineKeyboard: rows,
+	}
+	msg.ReplyMarkup = &keyboard
+	bot.Send(msg)
+}
+
+
+func wh_7(bot *tg.BotAPI, update tg.Update, small string) {
+	rowPages:=tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("1","whOne_"+small),tg.NewInlineKeyboardButtonData("2","whTwo_"+small),tg.NewInlineKeyboardButtonData("3","whThree_"+small),tg.NewInlineKeyboardButtonData("4","whFour_"+small),tg.NewInlineKeyboardButtonData("5","whFive_"+small),tg.NewInlineKeyboardButtonData("6","whSix_"+small),tg.NewInlineKeyboardButtonData("#7","whSeven_"+small))
+
+	var rows [][]tg.InlineKeyboardButton
+	for i := 97; i < 103; i += 2 {
+		name, callback := arrHandlerFromWH(small, i)
+		bl := tg.NewInlineKeyboardButtonData(name, "whSeven_"+callback)
+		name, callback = arrHandlerFromWH(small, i+1)
+		br := tg.NewInlineKeyboardButtonData(name, "whSeven_"+callback)
+		row := tg.NewInlineKeyboardRow(bl, br)
+		rows = append(rows, row)
+	}
+	name,callback:= arrHandlerFromWH(small, 103)
+	br := tg.NewInlineKeyboardButtonData(name, "whSeven_"+callback)
+	row := tg.NewInlineKeyboardRow(br)
+	rows = append(rows, row)
+	small = strings.Trim(small, ":")
+	buttonClose := tg.NewInlineKeyboardButtonData("❌Закрыть", "close_1")
+	rowFunc := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("<<", "whSix_"+small))
+	rowHome := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🏠Главная страница", "start_1"), buttonClose)
+	if small != "" {
+		rowAdmire := tg.NewInlineKeyboardRow(tg.NewInlineKeyboardButtonData("🟢Далее➠", "boxtype_"+small))
+		rows = append(rows,rowPages, rowFunc, rowAdmire, rowHome)
+	} else {
+		rows = append(rows,rowPages, rowFunc, rowHome)
+	}
+	text := textWH(small)
+	if small == ""{
+		text="☆Выберите склады(максимально 5)"
+	}
 	msg := tg.NewEditMessageText(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, text)
 	keyboard := tg.InlineKeyboardMarkup{
 		InlineKeyboard: rows,
@@ -187,7 +286,7 @@ func arrHandlerFromWH(small string, i int) (name string, callback string) {
 
 func textWH(small string) (result string) {
 
-	result = `Выбранные склады:`
+	result = `☆Выбранные склады:`
 	if small == "" {
 		result += ""
 		return
@@ -201,7 +300,7 @@ func textWH(small string) (result string) {
 
 	}
 	if len(arr) >= 5 {
-		result += "\n-------------------------------------\nВыбрано максимально количество складов"
+		result += "\n\n!⚠️Выбрано максимальное количество складов(5)⚠️!\nНажмите повторно на выбранный склад, для исключения его из списка."
 	}
 	return
 }
